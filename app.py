@@ -2,47 +2,11 @@ from flask import Flask , jsonify
 import json
 app = Flask(__name__)
 
-stores = [{
-    'name': "Elton's first store",
-    'items': [{'name':'my item 1', 'price': 30 }],
-    },
-    {
-    'name': "Elton's second store",
-    'items': [{'name':'my item 2', 'price': 15 }],
-    },
-]
+@app.route("/")
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
 
-#post /store data: {name :}
-@app.route('/store' , methods=['POST'])
-def create_store():
-    pass
-#get /store/<name> data: {name :}
-@app.route('/store/<string:name>')
-def get_store(name):
-    pass
-#get /store
-@app.route('/store')
-def get_stores():
-    return jsonify(stores)
-#post /store/<name> data: {name :}/item
-@app.route('/store/<string:name>/item' , methods=['POST'])
-def create_item_in_store(name):
-    pass
-#get /store/<name>/item data: {name :}/item
-@app.route('/store/<string:name>/item')
-def get_item_in_store(name):
-    pass
+if __name__ == '__main__':
+    app.run(debug=True, threaded=True)
 
-
-
-
-
-
-
-
-
-
-
-
-
-app.run(port=5000, debug=True)
+application = app
